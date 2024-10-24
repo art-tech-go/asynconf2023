@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class CalculateurTauxEmprunt {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Calculateur de Taux d'emprunt");
+
+        System.out.print("Type de véhicule (Citadine, Cabriolet, Berline, SUV / 4x4) : ");
+        String typeVehicule = scanner.nextLine();
+
+        System.out.print("Type de motorisation (Electrique, Gaz, Hybride, Diesel, Essence) : ");
+        String energie = scanner.nextLine();
+
+        System.out.print("Année de fabrication : ");
+        int anneeFabrication = scanner.nextInt();
+
+        System.out.print("Kilométrage par an : ");
+        int kilometrage = scanner.nextInt();
+
+        System.out.print("Nombre de passagers (1, 2, 3, 4) : ");
+        int passagers = scanner.nextInt();
+
+        int score = calculerScoreVehicule(typeVehicule, energie, anneeFabrication, kilometrage);
+        double tauxEmprunt = calculerTauxEmprunt(score, passagers);
+
+        System.out.println("Score du véhicule : " + score + "/40");
+        System.out.println("Taux d'emprunt : " + tauxEmprunt + " %");
+    }
+
+    public static int calculerScoreVehicule(String typeVehicule, String energie, int anneeFabrication, int kilometrage) {
+        // Implémentez la logique pour calculer le score du véhicule ici
+        // Exemple simplifié :
+        int score = 0;
+        if (typeVehicule.equals("Citadine")) {
+            score += 8;
+        }
+        // Ajoutez d'autres critères et calculez le score en conséquence
+        return score;
+    }
+
+    public static double calculerTauxEmprunt(int score, int passagers) {
+        // Implémentez la logique pour calculer le taux d'emprunt en fonction du score et du nombre de passagers
+        // Exemple simplifié :
+        double tauxBase = 2.5;
+        double taux = tauxBase;
+
+        if (score > 20) {
+            taux += 1.0;
+        }
+
+        if (passagers == 1) {
+            taux += 0.5;
+        } else if (passagers == 2) {
+            taux += 0.3;
+        }
+        // Ajoutez d'autres critères et calculez le taux en conséquence
+        return taux;
+    }
+}
